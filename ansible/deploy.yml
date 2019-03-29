@@ -1,0 +1,56 @@
+---
+- hosts: all
+  gather_facts: false
+  vars_prompt:
+    - name: "devops_chat_image_tag"
+      prompt: "Devops chat image tag"
+      private: false
+
+  tasks:
+    - set_fact: devops_chat_image_tag={{ devops_chat_image_tag }}
+      tags: always
+
+- hosts: webservers
+  gather_facts: false
+  tasks:
+    - name: Create a network
+      docker_network:
+        name: "{{ devops_chat_docker_network }}"
+
+    - template:
+        src: environment.j2
+        dest: "{{ devops_chat_env_file }}"
+      tags: env
+
+    - name: pull nginx
+      docker_image:
+        name: "{{ devops_chat_nginx_image_name }}:latest"
+        force: yes
+
+    - name: pull app
+      docker_image:
+        name: "{{ devops_chat_image_name }}:{{ devops_chat_image_tag }}"
+        force: yes
+
+    - name: start app
+      docker_container:
+        recreate: yes
+        name: app
+        state: started
+        image: "{{ devops_chat_image_name }}:{{ devops_chat_image_tag }}"
+        env_file: "{{ devops_chat_env_file }}"
+        exposed_ports:
+          - 3000
+        networks:
+          - name: "{{ devops_chat_docker_network }}"
+      tags: app
+
+    - name: start nginx
+      docker_container:
+        name: nginx
+        image: "{{ devops_chat_nginx_image_name }}:latest"
+        state: started
+        networks:
+          - name: "{{ devops_chat_docker_network }}"
+        ports:
+          - 80:80

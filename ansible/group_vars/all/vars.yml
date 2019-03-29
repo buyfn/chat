@@ -1,0 +1,5 @@
+---
+devops_chat_image_name: "buyfng/workshop-devops-app"
+devops_chat_nginx_image_name: "buyfng/workshop-devops-nginx"
+port: 3000
+devops_chat_docker_network: "devops_chat"

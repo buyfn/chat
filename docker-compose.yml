@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: services/app
+      dockerfile: Dockerfile.development
+    command: sh -c "npm run start"
+    expose:
+      - "3000"
+    volumes:
+      - "~/.bash_history:/.bash_history"
+      - "./services/app:/usr/src/app:cached"
+      - "/tmp:/tmp:delegated"
+    env_file: ".env"
+  nginx:
+    build:
+      context: services/nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - app

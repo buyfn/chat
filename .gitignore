@@ -1,0 +1,6 @@
+.env
+secrets.auto.tfvars
+
+terraform.tfstate.backup
+.terraform
+.vscode

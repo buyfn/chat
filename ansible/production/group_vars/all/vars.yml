@@ -1,0 +1,4 @@
+---
+
+node_env: production
+devops_chat_env_file: "/root/.env"

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders messages correctly 1`] = `
+<div>
+  <ul
+    className="messageList"
+  >
+    <li>
+      <span>
+        anon
+        : 
+      </span>
+      hi
+    </li>
+    <li>
+      <span>
+        vovan
+        : 
+      </span>
+      zdarova
+    </li>
+  </ul>
+</div>
+`;

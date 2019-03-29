@@ -1,0 +1,135 @@
+:root {
+    --btnColor: rgb(140, 240, 75);
+    --btnColorHover: rgb(190, 240, 30);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 30pt;
+}
+
+.header {
+    text-align: right;
+    font-size: 16pt;
+
+    margin: 0;
+    padding: 0;
+}
+
+.userCounter {
+    position: absolute;
+    left: 10px;
+    top: 21px;
+
+    font-size: 16pt;
+}
+
+.menu {
+    list-style-type: none;
+}
+
+.menu__item {
+    display: inline-block;
+    margin: 0 0.5em;
+}
+
+.loginForm, .signUpForm {
+    position: absolute;
+    right: 1em;
+    z-index: 1;
+
+    background-color: rgb(240, 240, 235);
+    padding: 0.5em 1em 1em 1em;
+
+    font-size: 16pt;
+    text-align: right;
+}
+
+.loginForm__input, .signUpForm__input {
+    font-size: 16pt;
+    height: 30px;
+}
+
+.loginForm__label, .signUpForm__label {
+    display: block;
+    margin: 12px 0;
+    margin-right: -2px;
+}
+
+.btn {
+    border: none;
+    background-color: var(--btnColor);
+
+    color: white;
+    font-weight: bold;
+}
+
+.btn--secondary {
+    height: 30px;
+    width: 80px;
+}
+
+.btn--secondary:hover {
+    cursor: pointer;
+    background-color: var(--btnColorHover);
+}
+
+.messageList {
+    list-style-type: none;
+    padding: 0;
+    width: 80%;
+    margin-bottom: 80px;
+
+    z-index: auto;
+    position: relative;
+}
+.messageList__message {
+    padding: 0.25em 0;
+}
+
+.chatForm {
+    position: fixed;
+    bottom: 8px;
+    z-index: 2;
+
+    width: 100%;
+}
+
+.chatForm__input {
+    height: 60px;
+    font-size: 30pt;
+    width: calc(100% - 115px);
+    vertical-align: bottom;
+}
+
+.btn--main {
+    padding: 0;
+    margin: 0;
+
+    width: 100px;
+    height: 60px;
+
+    font-size: 16pt;
+}
+.btn--main:hover {
+    background-color: var(--btnColorHover);
+    cursor: pointer;
+}
+
+a.pseudo {
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.35);
+}
+a.pseudo:hover {
+    color: red;
+    border-bottom: 1px dashed rgba(255, 0, 0, 0.35);
+}
+
+.error {
+    color: red;
+}
